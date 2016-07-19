@@ -8,10 +8,7 @@ app.directive('email',  function($q, $timeout, GetUsernames) {
           debugger;
           if (ctrl.$isEmpty(modelValue)) {
 
-            return $q.when(GetUsernames.getResult()).then(function(result){
-              debugger;
-              console.log(result);
-            });
+            return false;
           }
           var def = $q.defer();
 
