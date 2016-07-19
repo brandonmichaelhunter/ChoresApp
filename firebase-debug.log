@@ -1,0 +1,171 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\bin\firebase init
+[debug] CLI Version:  3.0.3
+[debug] Platform:     win32
+[debug] Node Version: v4.4.5
+[debug] Time:         Tue Jun 28 2016 18:21:51 GMT-0400 (Eastern Daylight Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Brandon\Documents\GitHub\AngularJS\ChoresApp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects 
+[error] 
+[error] Error: An unknown error occurred. Please contact support.
+[debug] Error Context: {
+  "requestOptions": {
+    "method": "GET",
+    "json": true,
+    "url": "https://admin.firebase.com/v1/projects",
+    "headers": {
+      "authorization": "Bearer ya29.CjAPA0TxqgputRsLmGD9F1yTHOzqmu1_E1FPpbO5pn_QIi_Nok-q6lE8D4VNoZNNkfs"
+    }
+  },
+  "body": {
+    "error": {
+      "code": "UNKNOWN_ERROR",
+      "message": "An unknown error occurred. Please contact support."
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": "UNKNOWN_ERROR",
+        "message": "An unknown error occurred. Please contact support."
+      }
+    },
+    "headers": {
+      "server": "nginx",
+      "date": "Tue, 28 Jun 2016 22:22:20 GMT",
+      "content-type": "application/json; charset=utf-8",
+      "content-length": "97",
+      "connection": "close",
+      "x-content-type-options": "nosniff"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "admin.firebase.com",
+        "port": 443,
+        "hostname": "admin.firebase.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/projects",
+        "path": "/v1/projects",
+        "href": "https://admin.firebase.com/v1/projects"
+      },
+      "method": "GET",
+      "headers": {
+        "authorization": "Bearer ya29.CjAPA0TxqgputRsLmGD9F1yTHOzqmu1_E1FPpbO5pn_QIi_Nok-q6lE8D4VNoZNNkfs",
+        "accept": "application/json"
+      }
+    }
+  }
+}
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\bin\firebase init
+[debug] CLI Version:  3.0.3
+[debug] Platform:     win32
+[debug] Node Version: v4.4.5
+[debug] Time:         Tue Jun 28 2016 18:22:30 GMT-0400 (Eastern Daylight Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Brandon\Documents\GitHub\AngularJS\ChoresApp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects 
+[error] 
+[error] Error: An unknown error occurred. Please contact support.
+[debug] Error Context: {
+  "requestOptions": {
+    "method": "GET",
+    "json": true,
+    "url": "https://admin.firebase.com/v1/projects",
+    "headers": {
+      "authorization": "Bearer ya29.CjAPA0TxqgputRsLmGD9F1yTHOzqmu1_E1FPpbO5pn_QIi_Nok-q6lE8D4VNoZNNkfs"
+    }
+  },
+  "body": {
+    "error": {
+      "code": "UNKNOWN_ERROR",
+      "message": "An unknown error occurred. Please contact support."
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": "UNKNOWN_ERROR",
+        "message": "An unknown error occurred. Please contact support."
+      }
+    },
+    "headers": {
+      "server": "nginx",
+      "date": "Tue, 28 Jun 2016 22:22:57 GMT",
+      "content-type": "application/json; charset=utf-8",
+      "content-length": "97",
+      "connection": "close",
+      "x-content-type-options": "nosniff"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "admin.firebase.com",
+        "port": 443,
+        "hostname": "admin.firebase.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/projects",
+        "path": "/v1/projects",
+        "href": "https://admin.firebase.com/v1/projects"
+      },
+      "method": "GET",
+      "headers": {
+        "authorization": "Bearer ya29.CjAPA0TxqgputRsLmGD9F1yTHOzqmu1_E1FPpbO5pn_QIi_Nok-q6lE8D4VNoZNNkfs",
+        "accept": "application/json"
+      }
+    }
+  }
+}

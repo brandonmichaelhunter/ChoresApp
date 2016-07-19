@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="sampleApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChoresApp</title>
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <link href="/styles/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <!-- endbuild -->
+  <link href="/styles/cover.css" rel="stylesheet">
+  <!-- build:js scripts/vendor/modernizr.js -->
+  <script src="/bower_components/modernizr/modernizr.js"></script>
+  <!-- endbuild -->
+  <script src="https://use.fontawesome.com/3e49c6b0f3.js"></script>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+  <style>
+  ul {
+    overflow: auto;
+  }
+
+  ul li {
+    list-style-type: none;
+    float: left;
+  }
+
+  ul li a i {
+    background: #205D7A;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 25px;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 15%;
+    transition: all 0.2s ease-in-out;
+  }
+  .fa-facebook {
+    background:#3b5998
+  }
+  .fa-github {
+    background:#605a5a
+  }
+  .fa-twitter {
+    background:#00aced
+  }
+  .fa-google-plus {
+    background:#dd4b39
+  }
+  ul li a i:hover {
+    opacity: .7;
+  }
+  .help-block-text{
+    color:white;
+  }
+  </style>
+</head>
+<body ng-controller="SampleCtrl">
+  <!--[if lt IE 10]>
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+      <div class="cover-container">
+
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">Chores App</h3>
+            <nav>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="#">Sign Up</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="inner cover">
+          <h1 class="cover-heading">Create Account Wizard</h1>
+
+          <form class="form-signin" novalidate  name="FormSignUp" ng-submit="CreateUserAccount()">
+            <div class="form-group" ng-class="{'has-error': FormSignUp.$submitted && FormSignUp.Firstname.$invalid }">
+              <label for="txtFirstname" class="sr-only">Firstname:</label>
+              <input type="text"  name="Firstname" class="form-control" ng-model="Users.Firstname" placeholder="First Name" required autofocus="">
+              <span class="help-block" ng-show="FormSignUp.$submitted &&FormSignUp.Firstname.$error.required">Your first name is required</span>
+            </div>
+            <div class="form-group" ng-class="{'has-error': FormSignUp.$submitted && FormSignUp.Lastname.$invalid }">
+              <label for="txtLastname" class="sr-only">Lastname:</label>
+              <input type="text" name="Lastname" class="form-control" ng-model="Users.Lastname" placeholder="Last Name" required  autofocus="">
+              <span class="help-block" ng-show="FormSignUp.$submitted &&FormSignUp.Lastname.$error.required">Your last name is required</span>
+            </div>
+            <div class="form-group" ng-class="{'has-error': FormSignUp.$submitted && FormSignUp.Email.$invalid }">
+              <label for="txtEmail" class="sr-only">Email:</label>
+              <input type="email" name="Email" options="{updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" class="form-control" placeholder="Email" ng-model="Users.Email" required autofocus="">
+              <span class="help-block" ng-show="FormSignUp.$submitted &&FormSignUp.Email.$error.required">Your email is required</span>
+
+              <span ng-show="FormSignUp.Email.$pending.email">Checking....</span>
+              <span ng-show="FormSignUp.Email.$error.email" class=" notAllGood">
+            <i class="material-icons">&#xE000;</i>
+            <span style="vertical-align:top">Sorry dude, this username is taken! Try again.</span>
+          </span>
+          <span ng-show="FormSignUp.Email.$valid && FormSignUp.Email$dirty" class="allGood">
+            <i class="material-icons allGood">&#xE86C; </i><span style="vertical-align:top">Cool, username is yours!!</span>
+          </span>
+            </div>
+            <div class="form-group">
+              <label for="txtPassword" class="sr-only">Password:</label>
+              <input type="password" id="txtPassword" class="form-control" placeholder="Password" required="" ng-model="Users.Password" autofocus="">
+            </div>
+            <div class="form-group">
+              <label for="txtReconfirmPassword" class="sr-only">Reconfirm Password:</label>
+              <input type="password" id="txtReconfirmPassword" class="form-control" placeholder="Reconfirm Password" required="" autofocus="">
+            </div>
+            <div class="form-group">
+              <div class="">
+                <h3>Add Your Kids</h3>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" ng-model="ChildName" placeholder="Child's name">
+                    <span id="helpBlock" class="help-block help-block-text">Provide your childs name</span>
+                    <input type="text" class="form-control" ng-model="ChildBirthYear" placeholder="Child's Birth Year">
+                    <span id="helpBlock" class="help-block help-block-text">This will be used to generate a unique password for your child.</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12"><button type="button" class="btn btn-md btn-success btn-block" ng-click="add()">Add Child</button></div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <div ng-repeat="kid in kids">
+                  {{ kid.childname }} <button type="button" class="btn btn-danger" ng-click="remove($index)">Remove</button>
+                </div>
+              </div>
+
+
+
+              <!-- input and button it add a new item -->
+
+            </div>
+            <div >
+
+
+              <div><button class="btn btn-lg btn-primary btn-block"   type="submit">Sign up</button></div>
+            </form>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='https://www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="/scripts/main.js"></script>
+    <!-- endbuild -->
+    <!-- start app code -->
+    <script src="/Configurations/FirebaseConfiguration.js"></script>
+    <script src="Modules/CreateAccountModule.js"></script>
+    <script src="Services/CreateAccountService.js"></script>
+    <script src="Directives/CreateAccountDirective.js"></script>
+    <script src="Controllers/CreateAccountController.js"></script>
+    <!-- end app code -->
+    <script>
+    /*
+    TODO:
+
+    - Add form validation.
+    - Add Password strength validation
+    - Fix the child display list. Replace the Remove button with a 'red' x icon.
+    - Move the javascript code into their own respective files.
+    - Add code to create user accounts to firebase before adding it to the Users table.
+    - Create a unit test . - http://karma-runner.github.io/0.12/index.html
+    - Test the page to make sure its responsive. Must be usable on Large and Small Desktop, Table and Mobile.
+    - Store page in GitHub
+    */
+    // Initialize Firebase
+
+
+
+
+
+  </script>
+    </body>
+    </html>
